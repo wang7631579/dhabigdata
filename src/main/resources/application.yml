@@ -1,0 +1,26 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /dha
+          
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+ 
+spring:
+  datasource:
+    db1:
+      driverClassName: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+      # spring2.0此处为jdbc-url
+      jdbc-url: jdbc:mysql://localhost:3306/cloudDB01?serverTimezone=GMT%2B8
+      type: com.alibaba.druid.pool.DruidDataSource
+    db2:
+      driverClassName: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+      # spring2.0此处为jdbc-url
+      jdbc-url: jdbc:mysql://localhost:3306/cloudDB01?serverTimezone=GMT%2B8
+      type: com.alibaba.druid.pool.DruidDataSource

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dha.dhabigdata.mapper.mysql.UserMapper">
+	<insert id="addUser" parameterType="com.dha.dhabigdata.entity.User">
+		INSERT INTO T_USER(userName,userCode) VALUES(#{userName},#{userCode}) 
+	</insert>
+	
+	<select id="getUserById" resultType="com.dha.dhabigdata.entity.User" parameterType="Long">
+		select * from T_USER where userId=#{userId}
+	</select>
+	
+	<select id="getUsersByUserCode" parameterType="java.util.Map"  resultType="java.util.Map">
+		select * from T_USER where 1=1
+		 <if test="name != null">
+  			  AND userName = #{name}
+ 		 </if>
+		 <if test="code != null">
+  			  AND userCode = #{code}
+ 		 </if>
+	</select>
+	
+	<select id="getUsersByUserCode2" parameterType="java.util.List"  resultType="java.util.Map">
+		select * from T_USER where userCode in  
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+		     #{item}
+		</foreach>
+		
+	</select>
+	
+	
+	
+	
+	
+
+</mapper>
+ 
+
